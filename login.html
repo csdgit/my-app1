@@ -1,0 +1,126 @@
+<html>
+<head>
+<style>
+
+.LoginLink
+{
+color:black;
+
+}
+
+.LoginFormOverlay
+{
+position:absolute;
+top:0;
+left:0;	
+width:100%;
+height:100%;
+z-index:9000;
+opacity:0.8;
+background:black;
+text-align:center;
+display:none;
+}
+
+.LFContainer
+{
+position:absolute;
+//border:2px solid white;
+margin:0px auto;
+top:25%;
+left:25%;
+right:25%;
+width:50%;
+z-index:9001;
+text-align:center;
+//display:-moz-inline-stack;
+//display:inline-block;
+//display:inherit;
+}
+
+form.LoginForm
+{
+position:relative;
+margin:0px auto;
+padding:1em;
+text-align:center;
+background:#E6E6E6;
+width:200px;
+display:none;
+}
+
+.uname,.upass,.lbutton
+{
+padding:0.5em;
+border:2px solid #404040;
+border-radius:3px;
+width:80%;
+}
+
+.lbutton
+{
+background:#4D4D4D;
+color:white;
+}
+
+</style> 
+
+<script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
+
+<script>
+$(function(){
+		$(".LoginForm").submit(function(){
+			console.log("test");
+			console.log("uname: "+$(".uname").val());
+			console.log("upass: "+$(".upass").val());
+
+			if($(".uname").val() === ''){
+				console.log("Uname empty");
+			}
+			if($(".upass").val() === ''){
+				console.log("upass empty");
+			}
+
+			return false;
+		});	
+
+		$(".LoginLink").click(
+		function(){
+			$(".LoginFormOverlay").fadeToggle();
+			$(".LoginFormContainer").fadeToggle();
+			$(".LoginForm").fadeToggle();	
+		}
+		);
+
+		$(".LoginFormClose").click(
+		function(){
+			$(".LoginFormOverlay").fadeToggle();
+			$(".LoginFormContainer").fadeToggle();
+			$(".LoginForm").fadeToggle();	
+		}
+		);
+});
+
+</script>
+</head>
+
+<body>
+<a class="LoginLink" href="#">Login</a>
+
+<div class="LoginFormOverlay">
+<div class="LFContainer">
+<p>
+	<form class="LoginForm" action="some/login/backend">
+	<a class="LoginFormClose"  href="#" style="float:right;">close</a><br/>
+	<p><input class="uname" type="text" name="username" placeholder="User ID"></input></p>
+	<p><input class="upass" type="password" name="pass" placeholder="Password"></input></p>
+	<p><button class="lbutton" type="submit" name="Login">Test</button></p>
+	<a href="#">Forgot Password</a>   <a href="#">New User?</a>
+	</form>
+</p>
+</div> <!--LoginFormContainer -->
+</div> <!--LoginFormOverlay -->
+
+</body>
+
+</html>
